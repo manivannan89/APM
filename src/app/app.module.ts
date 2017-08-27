@@ -2,13 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { ProductsComponent } from './products/products.component';
+
+import { AlertModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
