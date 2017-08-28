@@ -51,7 +51,8 @@ export class ProductsComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() {
+    ngOnInit():void {
+        console.log('On ngOnInit');
     }
 
 }
