@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 
 import { AlertModule } from 'ngx-bootstrap';
+import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent
+    ProductsComponent,
+    ConvertToSpacesPipe
   ],
   imports: [
     BrowserModule,
