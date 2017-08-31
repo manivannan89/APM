@@ -13,15 +13,16 @@ export class ProductsComponent implements OnInit {
     showImage: boolean = false;
     _listFilter: string;
 
-    public get ListFilter(): string {
+    get ListFilter(): string {
         return this._listFilter;
     }
 
-    public set ListFilter(v: string) {
-        this._listFilter = v;        
+    set ListFilter(v: string) {
+        this._listFilter = v;
+        this.filteredProducts = this.ListFilter ? this.performFilter(this.ListFilter) : this.products;
     }
 
-    filteredProducts:IProduct[];
+    filteredProducts: IProduct[];
 
     products: IProduct[] = [
         {
@@ -60,7 +61,7 @@ export class ProductsComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-    constructor() { 
+    constructor() {
         this.filteredProducts = this.products;
         this.ListFilter = 'cart';
     }
