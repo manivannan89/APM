@@ -7,7 +7,7 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
 })
 export class StarComponent implements OnInit, OnChanges {
   @Input() rating: number;
-  startWidth: number;
+  starWidth: number;
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class StarComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.startWidth = this.rating * 86 / 5;
+    this.starWidth = this.rating * 86 / 5;
   }
 
 }
