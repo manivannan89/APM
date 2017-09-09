@@ -38,7 +38,6 @@ export class ProductsComponent implements OnInit {
         this._productService.getProducts()
             .subscribe(products => { this.products = products, this.filteredProducts = products },
             errorMessage => this.errorMessage = <any>errorMessage);
-        this.filteredProducts = this.products;
     }
 
     performFilter(filterBy: string): IProduct[] {

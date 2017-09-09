@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpModule } from "@angular/http";
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
 
@@ -26,7 +26,7 @@ import { WelcomeComponent } from "./home/welcome.component";
     BrowserModule,
     FormsModule,
     AlertModule.forRoot(),
-    HttpClientModule,
+    HttpModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', component: ProductDetailComponent },
