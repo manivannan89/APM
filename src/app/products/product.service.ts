@@ -21,7 +21,9 @@ export class ProductService {
 
   getProductByID(productId: number): Observable<IProduct> { 
     return this.getProducts()
-      .map((products: IProduct[]) => products.find(product => product.productId === productId));
+      .map((products: IProduct[]) => products.find(product => product.productId === productId))
+      .do(data => console.log('All: ' + JSON.stringify(data)))
+      .catch(this.handleError);
   }
 
   private handleError(err: HttpErrorResponse) {
