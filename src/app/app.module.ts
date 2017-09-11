@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { ConvertToSpacesPipe } from './shared/convert-to-spaces.pipe';
 import { StarComponent } from './shared/star/star.component';
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
 import { ProductGuardService } from './products/product-guard.service';
@@ -27,7 +27,7 @@ import { ProductGuardService } from './products/product-guard.service';
     BrowserModule,
     FormsModule,
     AlertModule.forRoot(),
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent },

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from "./product";
-import { Http, Response } from "@angular/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
@@ -11,22 +11,21 @@ import 'rxjs/add/operator/map';
 export class ProductService {
 
   private _productUrl = './assets/api/products/products.json';
-  constructor(private _http: Http) { }
+  constructor(private _http: HttpClient) { }
 
   getProducts(): Observable<IProduct[]> {
-    return this._http.get(this._productUrl)
-      .map((response: Response) => <IProduct>response.json())
+    return this._http.get<IProduct[]>(this._productUrl)
       .do(data => console.log('All: ' + JSON.stringify(data)))
       .catch(this.handleError);
   }
 
-  getProductByID(productId: number): Observable<IProduct> {
+  getProductByID(productId: number): Observable<IProduct> { 
     return this.getProducts()
       .map((products: IProduct[]) => products.find(product => product.productId === productId));
   }
 
-  private handleError(err: Response) {
-    console.log(err);
-    return Observable.throw(err.json().err || 'Server Error');
+  private handleError(err: HttpErrorResponse) {
+    console.log(err.message);
+    return Observable.throw(err.message || ' Server Error ');
   }
 }
