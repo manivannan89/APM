@@ -14,6 +14,14 @@ import { ProductDetailComponent } from './products/product-detail.component';
 import { WelcomeComponent } from "./home/welcome.component";
 import { ProductGuardService } from './products/product-guard.service';
 
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
+import { ReportComponent } from './report/report.component';
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,10 +29,12 @@ import { ProductGuardService } from './products/product-guard.service';
     ConvertToSpacesPipe,
     StarComponent,
     ProductDetailComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,
+    FusionChartsModule,
     FormsModule,
     AlertModule.forRoot(),
     HttpClientModule,
@@ -32,6 +42,7 @@ import { ProductGuardService } from './products/product-guard.service';
       { path: 'products', component: ProductsComponent },
       { path: 'products/:id', canActivate: [ProductGuardService], component: ProductDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
+      { path: 'reports', component: ReportComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ])
